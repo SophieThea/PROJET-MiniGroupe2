@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'un Patient</title>
-    <script src="scriptPatient.js"></script>
+    <script src="scriptDossier.js"></script>
 </head>
 <header>
-    <h1>Application de gestion de Patient</h1>
+    <h1>Dossier Patient</h1>
     <nav>
         <ul>
             <li><a href="PatientForm.html"> PatientForm</a></li>
@@ -21,35 +21,60 @@
     <form action="">
        
         <label for="nom">Nom du patient:</label>
-        <input type="text" id="nom" placeholder="Entrer votre nom">
+        <input type="text" id="nom" placeholder="Entrer votre nom"><br>
 
         <label for="prenom">Prenom du patient:</label>
-        <input type="text"  id="prenom" placeholder="Entrer votre prenom">
+        <input type="text"  id="prenom" placeholder="Entrer votre prenom"><br>
 
         <label for="adresse">Adresse:</label>
-        <input type="text"  id="adresse" placeholder="Entrer votre adresse">
+        <input type="text"  id="adresse" placeholder="Entrer votre adresse"><br>
 
         <label for="tel">Telephone:</label>
-        <input type="number"  id="telephone" placeholder="Entrer votre numero">
+        <input type="number"  id="telephone" placeholder="Entrer votre numero"><br>
 
         <label for="naissance">Date de naissance:</label>
-        <input type="date"  id="naissance" placeholder="Entrer votre date de naissance">
+        <input type="date"  id="naissance" placeholder="Entrer votre date de naissance"><br>
 
         <label for="dcfreation">Date de creation du dossier:</label>
-        <input type="date" id="dcreation" placeholder="Entrer la date de creation">
+        <input type="date" id="dcreation" placeholder="Entrer la date de creation"><br>
 
+        <p> Allergies:</p>
+        <input type="radio" name="choice" value="non"> Non
+        <input type="radio" name="choice" value="oui"> Oui 
+
+        <label for="oui">Si oui:</label>
+        <input type="text"  id="oui" placeholder="Entrer ici..."><br>
+
+        <label for="sexe">Sexe:</label>
         <select name="sexe" id="sexe">
-            <option value="masculin"></option>
-            <option value="feminin"></option>
-            <option value="autre"></option>
+            <option value="masculin">Masculin</option>
+            <option value="feminin">Feminin</option>
+            <option value="autre">Autre</option>
         </select>
-
-
-
     </form>
+
     
 </body>
 <footer>
-
-</footer>
+    <div>
+      <h3>À propos</h3>
+      <p>Bienvenue sur notre site ! Nous sommes dédiés à vous offrir le meilleur contenu et service.</p>
+    </div>
+    <div>
+      <h3>Liens utiles</h3>
+      <ul>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>Email : contact@exemple.com</p>
+      <p>Téléphone : +33 1 23 45 67 89</p>
+      <p>Adresse : 123 Rue Imaginaire, Paris, France</p>
+    </div>
+    <p>&copy; 2025 MonSite. Tous droits réservés.</p>
+  </footer>
+  
 </html>
