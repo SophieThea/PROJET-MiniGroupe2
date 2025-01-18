@@ -3,10 +3,15 @@ const bp=requie('body-parser');
 const mysql=requie('mysql');
 const path=requie('path');
 const app=requie('app');
-//pour executer on mets 
-//node le nom du fichier
-//
-//
+//pour executer on mets node le nom du fichier
+
+
+
+
+
+
+
+
 //confuguration de la db 
 const madoiciaussimets=mysql.createConnection({
 host :'localhost',
