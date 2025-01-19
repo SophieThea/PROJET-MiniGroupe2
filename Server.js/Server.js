@@ -14,7 +14,7 @@ const PORT = 3020;
 
 
 //confuguration de la db 
-const madoiciaussimets=mysql.createConnection({
+const db =mysql.createConnection({
 host :'localhost',
 user:'root',
 password:'',
@@ -42,10 +42,14 @@ app.use(express.stalic('public'));
 
 //route pour ajouter un utilisateur 
 app.use('/api/user',(req,res)=>{
-    const{prenom,nom,login,password,profile}=req.body;
+    const{prenom,nom,login,password}=req.body;
     const sql="Insert into user (prenom,nom,login,password) values(?,?,?,?)";
-    projetnodejs.querry(sql,[prenom,nom,login,password],(error,result)=>{})
+    db.querry(sql,[prenom,nom,login,password],(error,result)=>{})
 });
+
+
+
+
 //Madopartout ou tu vois ton nom ou tu vois db mets s'il te plait le nom de la base de donnée ok 
 //ok c'est fait
 

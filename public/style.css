@@ -1,6 +1,7 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 20px;
+    background-color: #698e7a;
 
 }
 header {
@@ -9,23 +10,103 @@ header {
     text-align: left;    
     padding: 10px;          
 }
+
+
+
+
+/*autre version de header */
+header {
+    background-color: #bacfba;
+    color: rgb(255, 255, 255);
+    text-align: left; /* Aligne le texte à gauche */
+    padding: 10px;
+    display: flex; /* Utilise Flexbox */
+    align-items: center; /* Aligne les éléments verticalement au centre */
+    justify-content: space-between; /* Place le texte et l'image aux extrémités */
+}
+
+header h1 {
+    margin: 0; /* Enlève la marge autour de <h1> */
+    font-size: 24px; /* Réduit la taille de la police du titre */
+    font-family: 'Poppins', sans-serif; /* Applique la police Poppins */
+    font-weight: 600; /* Applique un poids de police moyen */
+}
+
+header img.logo {
+    height: 80px; /* Définit une hauteur fixe pour l'image du logo */
+    width: auto; /* Garde le ratio de l'image */
+}
+
+
+
+
+
+
+
+
 /* Style pour le menu de navigation */
+
+/*J'ai un peu changer le css, si ca te convient on laisse comme ca
+
+/*
 header nav ul {
-    list-style: none;        /* Supprime les puces */
+    list-style: none;        // Supprime les puces //
     padding: 0;
     margin: 10px 0 0 0;
-    display: flex;           /* Affiche les liens en ligne */
-   
+    display: flex;           //Affiche les liens en ligne //   
 }
+
 header nav ul li {
-    margin: 0 15px;          /* Espacement entre les liens */
+    margin: 0 15px;          // Espacement entre les liens //
 }
 header nav ul li a {
-    color: rgb(53, 10, 163);            /* Couleur des liens */
-    text-decoration: none;   /* Supprime le soulignement */
+    color: rgb(53, 10, 163);            //Couleur des liens 
+    text-decoration: none;   //Supprime le soulignement //
     font-weight: bold;
 }
+*/
+
+
+header nav ul {
+    list-style-type: none; /* Enlève les puces de la liste */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Utilise flexbox pour aligner les éléments horizontalement */
+    justify-content: flex-end; /* Aligne les éléments à droite */
+}
+
+header nav ul li {
+    margin-left: 20px; /* Espace entre les éléments du menu */
+}
+
+header nav ul li a {
+    color: rgb(29, 52, 37); /* Couleur des liens */
+    text-decoration: none; /* Supprime le soulignement */
+    font-weight: bold;
+    padding: 15px; /* Ajoute du padding pour former un carré */
+    background-color: #528479; /* Couleur de fond par défaut */
+    border-radius: 5px; /* Arrondir les coins du carré */
+    transition: background-color 0.3s, transform 0.3s; /* Animation de la couleur et de l'effet */
+    display: block; /* Fais en sorte que le lien occupe toute la surface du bouton */
+    text-align: center; /* Centrer le texte */
+}
+
+/* Effet de survol : changement de couleur et agrandissement */
+header nav ul li a:hover {
+    background-color: rgb(73, 120, 108); /* Couleur de fond au survol */
+    color: #000000; /* Couleur du texte au survol */
+    transform: scale(1.1); /* Agrandir le bouton au survol */
+}
+
+
+
+
+
+
+
+
 table {
+    background-color: white;
     border-collapse: collapse;
     width: 50%;
     margin: auto;
