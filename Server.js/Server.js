@@ -50,6 +50,12 @@ app.post('/api/user', (req, res) => {
 
 
 
+
+
+
+
+
+
 // Routes pour les dossiers
 app.post('/api/dossiers', (req, res) => {
     const {Date_creation} = req.body; // Assurez-vous que ces champs correspondent à votre formulaire
