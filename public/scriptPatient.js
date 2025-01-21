@@ -3,7 +3,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root', // Votre utilisateur wat
     password: '', // Votre mot de passe MySQL
-    database: 'db' // Remplacez par votre base de données
+    database: 'projetnodejs' // Remplacez par votre base de données
   });
   
   // Fonction pour ajouter un enregistrement

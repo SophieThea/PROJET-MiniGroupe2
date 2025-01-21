@@ -11,7 +11,7 @@ const bcrypt = require('bcryptjs');
 
 // Initialisation de l'application
 const app = express();
-const PORT = 3020;
+const PORT = 3000;
 
 // Configuration de la base de données
 const db = mysql.createConnection({
@@ -34,11 +34,11 @@ db.connect((err) => {
 app.use(bp.json());
 app.use(express.static('public'));
 
-// Route pour ajouter un utilisateur
+// Route pour ajouter un patient
 app.post('/api/user', (req, res) => {
-    const { prenom, nom, login, password } = req.body;
-    const sql = "INSERT INTO user (prenom, nom, login, password) VALUES (?, ?, ?, ?)";
-    db.query(sql, [prenom, nom, login, password], (error, result) => {
+    const {Nom, Prenom, Age, Tel,Sexe, Nationalité} = req.body;
+    const sql = "INSERT INTO user (Nom, Prenom, Age, Tel,Sexe, Nationalité) VALUES (?, ?, ?, ?, ?, ?)";
+    db.query(sql, [Nom, Prenom, Age, Tel,Sexe, Nationalité], (error, result) => {
         if (error) {
             console.error('Erreur lors de l\'ajout de l\'utilisateur :', error);
             res.status(500).send('Erreur lors de l\'ajout de l\'utilisateur');
@@ -52,5 +52,10 @@ app.post('/api/user', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
+
+
+
+
+
 //Mado rempli les choses de la base de donnée s'il te plait
 // Exemple : Nom ,  prenom etc..... 
