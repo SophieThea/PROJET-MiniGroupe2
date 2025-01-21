@@ -53,7 +53,7 @@ app.post('/api/user', (req, res) => {
 // Routes pour les dossiers
 app.post('/api/dossiers', (req, res) => {
     const {Date_creation} = req.body; // Assurez-vous que ces champs correspondent à votre formulaire
-    const query = 'INSERT INTO dossiers (Date_creation) VALUES (?)';
+    const query = 'INSERT INTO dossier (Date_creation) VALUES (?)';
     db.query(query, [Date_creation], (err, result) => {
       if (err) {
         res.status(500).json({ message: 'Erreur lors de l\'ajout du dossier.', error: err });
@@ -64,7 +64,7 @@ app.post('/api/dossiers', (req, res) => {
   });
   
   app.get('/api/dossiers', (req, res) => {
-    const query = 'SELECT * FROM dossiers';
+    const query = 'SELECT * FROM dossier';
     db.query(query, (err, results) => {
       if (err) {
         res.status(500).json({ message: 'Erreur lors de la récupération des dossiers.', error: err });
