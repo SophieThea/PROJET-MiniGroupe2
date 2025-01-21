@@ -30,6 +30,7 @@ header h1 {
     font-size: 24px; /* Réduit la taille de la police du titre */
     font-family: 'Poppins', sans-serif; /* Applique la police Poppins */
     font-weight: 600; /* Applique un poids de police moyen */
+    color: #000000;
 }
 
 header img.logo {
