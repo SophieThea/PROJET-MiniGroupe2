@@ -4,14 +4,14 @@ const mysql = require('mysql');
 const path = require('path');
 const express = require('express');
 const Joi = require('joi'); // Importer Joi
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken'); //l'api 
+const bcrypt = require('bcryptjs');//l'api 
 
 
 
 // Initialisation de l'application
 const app = express();
-const PORT = 3000;
+const PORT = 3020;
 
 // Configuration de la base de données
 const db = mysql.createConnection({
@@ -22,28 +22,44 @@ const db = mysql.createConnection({
 });
 
 // Connexion à la base de données
-db.connect((err) => {
+projetnodejs.connect((err) => {
     if (err) {
         console.error('Erreur de connexion avec la base de données :', err.stack);
         return;
     }
     console.log('Connexion réussie, ID du thread :', projetnodejs.threadId);
 });
+// Schéma de validation avec Joi
+const patientSchema = Joi.object({
+    nom: Joi.string().min(2).max(50).required(),
+    prenom: Joi.string().min(2).max(50).required(),
+    age: Joi.number().integer().min(0).max(150).required(),
+    adresse: Joi.string().max(255).required(),
+    telephone: Joi.string().pattern(/^[0-9]{10,15}$/).required(), // 10 à 15 chiffres
+    naissance: Joi.date().required(),
+    dcreation: Joi.date().required(),
+    allergies: Joi.string().max(255).allow('').optional(), // Peut être vide
+    sexe: Joi.string().valid('Homme', 'Femme').required(),
+});
 
 // Middleware
 app.use(bp.json());
 app.use(express.static('public'));
 
+<<<<<<< Updated upstream
 
 
 
 
 
 // Route pour ajouter un patient
+=======
+// Route pour ajouter un utilisateur
+>>>>>>> Stashed changes
 app.post('/api/user', (req, res) => {
-    const {Nom, Prenom, Age, Tel,Sexe, Nationalité} = req.body;
-    const sql = "INSERT INTO user (Nom, Prenom, Age, Tel,Sexe, Nationalité) VALUES (?, ?, ?, ?, ?, ?)";
-    db.query(sql, [Nom, Prenom, Age, Tel,Sexe, Nationalité], (error, result) => {
+    const { prenom, nom, login, password } = req.body;
+    const sql = "INSERT INTO user (prenom, nom, login, password) VALUES (?, ?, ?, ?)";
+    db.query(sql, [prenom, nom, login, password], (error, result) => {
         if (error) {
             console.error('Erreur lors de l\'ajout de l\'utilisateur :', error);
             res.status(500).send('Erreur lors de l\'ajout de l\'utilisateur');
@@ -91,10 +107,5 @@ app.post('/api/dossiers', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
-
-
-
-
-
 //Mado rempli les choses de la base de donnée s'il te plait
 // Exemple : Nom ,  prenom etc..... 
