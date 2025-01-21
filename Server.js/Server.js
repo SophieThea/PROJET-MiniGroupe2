@@ -46,16 +46,19 @@ const patientSchema = Joi.object({
 app.use(bp.json());
 app.use(express.static('public'));
 
-<<<<<<< Updated upstream
+
 
 
 
 
 
 // Route pour ajouter un patient
-=======
+
 // Route pour ajouter un utilisateur
->>>>>>> Stashed changes
+
+
+// Route pour ajouter un utilisateur
+
 app.post('/api/user', (req, res) => {
     const { prenom, nom, login, password } = req.body;
     const sql = "INSERT INTO user (prenom, nom, login, password) VALUES (?, ?, ?, ?)";
