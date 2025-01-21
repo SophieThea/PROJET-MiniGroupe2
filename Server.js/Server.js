@@ -1,61 +1,50 @@
-const express=requie('express');
-const bp=requie('body-parser');
-const mysql=requie('mysql');
-const path=requie('path');
-const app=requie('app');
-//pour executer on mets node le nom du fichier
+const express = require('express');
+const bp = require('body-parser');
+const mysql = require('mysql');
+const path = require('path');
 
-
-
-
-//le port du site
-const appp = express();
+// Initialisation de l'application
+const app = express();
 const PORT = 3020;
 
-
-
-//confuguration de la db 
-const db =mysql.createConnection({
-host :'localhost',
-user:'root',
-password:'',
-database:'projetnodejs'
+// Configuration de la base de données
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'projetnodejs'
 });
 
-
-
-
-//connection entre la base de donnée
-db.connect((err)=>{
-if(err){
-    console.error('erreur de  connexion avec la base de donnée'+err.stock)
-    return;
-}
-console.log('connexion reussie'+db.threadId);
+// Connexion à la base de données
+db.connect((err) => {
+    if (err) {
+        console.error('Erreur de connexion avec la base de données :', err.stack);
+        return;
+    }
+    console.log('Connexion réussie, ID du thread :', projetnodejs.threadId);
 });
 
-
-
-//Middlewave
+// Middleware
 app.use(bp.json());
-app.use(express.stalic('public'));
+app.use(express.static('public'));
 
-
-//route pour ajouter un utilisateur 
-app.use('/api/user',(req,res)=>{
-    const{prenom,nom,login,password}=req.body;
-    const sql="Insert into user (prenom,nom,login,password) values(?,?,?,?)";
-    db.querry(sql,[prenom,nom,login,password],(error,result)=>{})
+// Route pour ajouter un utilisateur
+app.post('/api/user', (req, res) => {
+    const { prenom, nom, login, password } = req.body;
+    const sql = "INSERT INTO user (prenom, nom, login, password) VALUES (?, ?, ?, ?)";
+    db.query(sql, [prenom, nom, login, password], (error, result) => {
+        if (error) {
+            console.error('Erreur lors de l\'ajout de l\'utilisateur :', error);
+            res.status(500).send('Erreur lors de l\'ajout de l\'utilisateur');
+            return;
+        }
+        res.status(200).send('Utilisateur ajouté avec succès');
+    });
 });
 
-
-
-
-//Madopartout ou tu vois ton nom ou tu vois db mets s'il te plait le nom de la base de donnée ok 
-//ok c'est fait
-
-
-// Lancement du serveur    ca marche pas encore
-//app.listen(PORT, () => {
-    //console.log(`Serveur lancé sur http://localhost:${PORT}`);
-//});
+// Lancement du serveur
+app.listen(PORT, () => {
+    console.log(`Serveur lancé sur http://localhost:${PORT}`);
+});
+//Mado rempli les choses de la base de donnée s'il te plait
+// Exemple : Nom ,  prenom etc..... 
