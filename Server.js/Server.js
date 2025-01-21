@@ -2,6 +2,12 @@ const express = require('express');
 const bp = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
+const express = require('express');
+const Joi = require('joi'); // Importer Joi
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+
 
 // Initialisation de l'application
 const app = express();
