@@ -34,6 +34,11 @@ db.connect((err) => {
 app.use(bp.json());
 app.use(express.static('public'));
 
+
+
+
+
+
 // Route pour ajouter un patient
 app.post('/api/user', (req, res) => {
     const {Nom, Prenom, Age, Tel,Sexe, Nationalité} = req.body;
@@ -47,6 +52,40 @@ app.post('/api/user', (req, res) => {
         res.status(200).send('Utilisateur ajouté avec succès');
     });
 });
+
+
+
+
+// Routes pour les dossiers
+app.post('/api/dossiers', (req, res) => {
+    const {Date_creation} = req.body; // Assurez-vous que ces champs correspondent à votre formulaire
+    const query = 'INSERT INTO dossiers (Date_creation) VALUES (?)';
+    db.query(query, [Date_creation], (err, result) => {
+      if (err) {
+        res.status(500).json({ message: 'Erreur lors de l\'ajout du dossier.', error: err });
+      } else {
+        res.status(201).json({ message: 'Dossier ajouté avec succès.' });
+      }
+    });
+  });
+  
+  app.get('/api/dossiers', (req, res) => {
+    const query = 'SELECT * FROM dossiers';
+    db.query(query, (err, results) => {
+      if (err) {
+        res.status(500).json({ message: 'Erreur lors de la récupération des dossiers.', error: err });
+      } else {
+        res.json(results);
+      }
+    });
+  });
+  
+
+
+
+
+
+
 
 // Lancement du serveur
 app.listen(PORT, () => {
