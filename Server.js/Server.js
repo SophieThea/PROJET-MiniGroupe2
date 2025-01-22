@@ -50,6 +50,9 @@ app.use(express.static('public'));
 
 
 
+
+
+
 // Route pour ajouter un patient
 app.post('/api/user', (req, res) => {
     const { prenom, nom, login, password } = req.body;
