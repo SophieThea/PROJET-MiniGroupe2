@@ -16,6 +16,10 @@ const connection = mysql.createConnection({
     });
   }
   
+
+
+
+
   // Fonction pour modifier un enregistrement
   function modifier(idPatient,newData) {
     const sql = 'UPDATE client SET nom= ? WHERE idclient= ?';

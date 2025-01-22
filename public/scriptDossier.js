@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const mysql = require('mysql');
 const Joi = require('joi'); // Validation
 const bcrypt = require('bcryptjs'); // Pour hacher les mots de passe
@@ -107,3 +107,22 @@ document.getElementById('patientform').addEventListener('submit', async (e) => {
 app.listen(PORT, () => {
     console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
+*/
+
+
+
+document.getElementById('formDossier').addEventListener('submit', async event => {
+    event.preventDefault();
+    const nom = document.getElementById('nom').value;
+    const description = document.getElementById('description').value;
+  
+    await fetch('http://localhost:3000/api/dossiers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nom, description })
+    });
+  
+    alert('Dossier ajouté avec succès !');
+    document.getElementById('formDossier').reset();
+  });
+  
