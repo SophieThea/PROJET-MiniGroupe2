@@ -99,17 +99,14 @@ app.listen(PORT, () => {
 
 */
 
-<<<<<<< HEAD
 
 
 
 
 
-const express = require('express')
-=======
+
 const express = require('express');
 const mysql = require('mysql');
->>>>>>> 7dfb6188a2003982543e6fc79e2f75a2b3bc559a
 
 
 //rest onject
@@ -127,8 +124,6 @@ app.get('/', (req,res) =>{
 const PORT = 5050;
 
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -162,18 +157,15 @@ connexion.query("SELECT * FROM patient",(err,rows,fields) => {
 
 
 
->>>>>>> 7dfb6188a2003982543e6fc79e2f75a2b3bc559a
 //Listen
 app.listen(PORT , () => {
     console.log('Server running');
 });
 
-<<<<<<< HEAD
-=======
-});
+
+
 
 
 
 //
 //SA MARCHE POUR L'INSTANT DONC TOUCHONS A RIEN
->>>>>>> 7dfb6188a2003982543e6fc79e2f75a2b3bc559a
