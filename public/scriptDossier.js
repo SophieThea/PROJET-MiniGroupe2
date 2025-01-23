@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-/*const express = require('express');
+const express = require('express');
 const mysql = require('mysql');
 const Joi = require('joi'); // Validation
 const bcrypt = require('bcryptjs'); // Pour hacher les mots de passe
@@ -12,15 +11,21 @@ app.use(express.json()); // Middleware pour lire les JSON
 
 // Configuration de la base de données
 const db = mysql.createConnection({
-=======
-// Configuration de la connexion
-const connection = mysql.createConnection({
->>>>>>> Stashed changes
     host: 'localhost',
-    user: 'root', // Votre utilisateur wat
-    password: '', // Votre mot de passe MySQL
-    database: 'projetnodejs' // Remplacez par votre base de données
+    user: 'root',
+    password: '',
+    database: 'projetnodejs',
 });
+
+// Connexion à la base de données
+db.connect((err) => {
+    if (err) {
+        console.error('Erreur de connexion avec la base de données :', err.stack);
+        return;
+    }
+    console.log('Connexion réussie, ID du thread :', projetnodejs.threadId);
+});
+
 // Schéma de validation Joi
 const patientSchema = Joi.object({
     nom: Joi.string().min(2).max(50).required(),
@@ -102,28 +107,6 @@ document.getElementById('patientform').addEventListener('submit', async (e) => {
 app.listen(PORT, () => {
     console.log(`Serveur lancé sur http://localhost:${PORT}`);
 });
-*/
 
 
-const express = require('express');
 
-
-//rest onject
-const app = express()
-
-
-//route
-//URL => http;//localhost:5050
-app.get('/', (req,res) =>{
-    return res.status(200).send('<h1>BONzourrr les amis</h1>');                                            
-});
-
-
-//PORT
-const PORT = 5050;
-
-//Listen
-app.listen(PORT , () => {
-    console.log('Server running');
-
-});
