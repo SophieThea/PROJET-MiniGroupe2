@@ -100,6 +100,7 @@ app.listen(PORT, () => {
 */
 
 const express = require('express');
+const mysql = require('mysql');
 
 
 //rest onject
@@ -115,6 +116,40 @@ app.get('/', (req,res) =>{
 
 //PORT
 const PORT = 5050;
+
+
+
+
+
+//connexion a la base de donnee
+const connection = mysql.createconnexion({
+    host:'localhost',
+    user:'root',
+    password:'root',
+    database:'projetnodejs'
+});
+
+
+
+
+connexion.connect((err) => {
+    if (err) {
+        console.error('Erreur de connexion avec la base de données :'+err.stack);
+        return;
+    }
+    console.log('Connexion réussie:');
+});
+
+
+connexion.query("SELECT * FROM patient",(err,rows,fields) => {
+    if (err) throw err;
+    console.log("mes donnees sont", rows)
+
+});
+
+
+
+
 
 //Listen
 app.listen(PORT , () => {
