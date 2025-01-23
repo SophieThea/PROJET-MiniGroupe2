@@ -1,0 +1,15 @@
+{
+  "name": "projet-minigroupe2",
+  "version": "1.0.0",
+  "description": "projet-minigroupe2 app  node express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "sophie",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
