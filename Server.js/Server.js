@@ -99,7 +99,12 @@ app.listen(PORT, () => {
 
 */
 
-const express = require('express');
+
+
+
+
+
+const express = require('express')
 
 
 //rest onject
@@ -107,7 +112,7 @@ const app = express()
 
 
 //route
-//URL => http;//localhost:5050
+//URL => http://localhost:5050
 app.get('/', (req,res) =>{
     return res.status(200).send('<h1>BONzourrr les amis</h1>');                                            
 });
@@ -119,5 +124,5 @@ const PORT = 5050;
 //Listen
 app.listen(PORT , () => {
     console.log('Server running');
-
 });
+
