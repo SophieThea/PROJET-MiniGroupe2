@@ -128,17 +128,17 @@ const PORT = 5050;
 
 
 //connexion a la base de donnee
-const connection = mysql.createconnexion({
+const connection = mysql.createConnection({
     host:'localhost',
     user:'root',
-    password:'root',
+    password:'',
     database:'projetnodejs'
 });
 
 
 
 
-connexion.connect((err) => {
+connection.connect((err) => {
     if (err) {
         console.error('Erreur de connexion avec la base de données :'+err.stack);
         return;
@@ -147,12 +147,12 @@ connexion.connect((err) => {
 });
 
 
-connexion.query("SELECT * FROM patient",(err,rows,fields) => {
+/*connexion.query("SELECT * FROM patient",(err,rows,fields) => {
     if (err) throw err;
     console.log("mes donnees sont", rows)
 
 });
-
+*/
 
 
 
@@ -169,3 +169,4 @@ app.listen(PORT , () => {
 
 //
 //SA MARCHE POUR L'INSTANT DONC TOUCHONS A RIEN
+//cd C:\Program Files\nodejs\backend\PROJET-MiniGroupe2\Server.js   apres node server.js
