@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /*const express = require('express');
 const mysql = require('mysql');
 const Joi = require('joi'); // Validation
@@ -11,21 +12,15 @@ app.use(express.json()); // Middleware pour lire les JSON
 
 // Configuration de la base de données
 const db = mysql.createConnection({
+=======
+// Configuration de la connexion
+const connection = mysql.createConnection({
+>>>>>>> Stashed changes
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'projetnodejs',
+    user: 'root', // Votre utilisateur wat
+    password: '', // Votre mot de passe MySQL
+    database: 'projetnodejs' // Remplacez par votre base de données
 });
-
-// Connexion à la base de données
-db.connect((err) => {
-    if (err) {
-        console.error('Erreur de connexion avec la base de données :', err.stack);
-        return;
-    }
-    console.log('Connexion réussie, ID du thread :', projetnodejs.threadId);
-});
-
 // Schéma de validation Joi
 const patientSchema = Joi.object({
     nom: Joi.string().min(2).max(50).required(),
