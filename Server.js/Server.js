@@ -99,12 +99,17 @@ app.listen(PORT, () => {
 
 */
 
+<<<<<<< HEAD
 
 
 
 
 
 const express = require('express')
+=======
+const express = require('express');
+const mysql = require('mysql');
+>>>>>>> 7dfb6188a2003982543e6fc79e2f75a2b3bc559a
 
 
 //rest onject
@@ -122,8 +127,53 @@ app.get('/', (req,res) =>{
 const PORT = 5050;
 
 
+<<<<<<< HEAD
+=======
+
+
+
+//connexion a la base de donnee
+const connection = mysql.createconnexion({
+    host:'localhost',
+    user:'root',
+    password:'root',
+    database:'projetnodejs'
+});
+
+
+
+
+connexion.connect((err) => {
+    if (err) {
+        console.error('Erreur de connexion avec la base de données :'+err.stack);
+        return;
+    }
+    console.log('Connexion réussie:');
+});
+
+
+connexion.query("SELECT * FROM patient",(err,rows,fields) => {
+    if (err) throw err;
+    console.log("mes donnees sont", rows)
+
+});
+
+
+
+
+
+>>>>>>> 7dfb6188a2003982543e6fc79e2f75a2b3bc559a
 //Listen
 app.listen(PORT , () => {
     console.log('Server running');
 });
 
+<<<<<<< HEAD
+=======
+});
+
+
+
+//
+//SA MARCHE POUR L'INSTANT DONC TOUCHONS A RIEN
+>>>>>>> 7dfb6188a2003982543e6fc79e2f75a2b3bc559a
