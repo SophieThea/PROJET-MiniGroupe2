@@ -126,12 +126,11 @@ const PORT = 5050;
 
 
 
-
 //connexion a la base de donnee
 const connection = mysql.createconnexion({
     host:'localhost',
     user:'root',
-    password:'root',
+    password:'',
     database:'projetnodejs'
 });
 
@@ -161,7 +160,6 @@ connexion.query("SELECT * FROM patient",(err,rows,fields) => {
 app.listen(PORT , () => {
     console.log('Server running');
 });
-
 
 
 
