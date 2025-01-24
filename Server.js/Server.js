@@ -156,6 +156,20 @@ connection.connect((err) => {
 */
 
 
+//pour recevoir les patients
+app.post('/', (req, res) => {
+    const patientData = req.body;
+
+    if (!patientData.nom || !patientData.prenom || !patientData.age) {
+        return res.status(400).json({ message: 'Données invalides.' });
+    }
+
+    console.log('Données reçues :', patientData);
+    res.status(200).json({ message: 'Patient ajouté avec succès !' });
+});
+
+
+
 
 
 //Listen

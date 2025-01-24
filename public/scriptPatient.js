@@ -4,7 +4,7 @@ document.getElementById('patientform').addEventListener('submit', async (e) => {
   e.preventDefault(); // Empêche le rechargement de la page
 
   const nom = document.getElementById('nom').value;
-  const datedecreation = document.getElementById('prenom').value;
+  const prenom = document.getElementById('prenom').value;
   const age = document.getElementById('age').value;
   const adresse = document.getElementById('adresse').value;
   const telephone = document.getElementById('telephone').value;
