@@ -4,7 +4,7 @@
 document.getElementById('formDossier').addEventListener('submit', async (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
 alue;
-    const datedecreation = document.getElementById('prenom').value;
+    const datedecreation = document.getElementById('dcreation').value;
     
     
     const patientData = { dcreation};

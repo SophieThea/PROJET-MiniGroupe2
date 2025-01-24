@@ -105,6 +105,10 @@ app.listen(PORT, () => {
 
 
 
+
+
+
+
 const express = require('express');
 const mysql = require('mysql');
 
@@ -122,8 +126,6 @@ app.get('/', (req,res) =>{
 
 //PORT
 const PORT = 5050;
-
-
 
 
 //connexion a la base de donnee
@@ -161,6 +163,20 @@ app.post('/', (req, res) => {
     console.log('Données reçues:', req.body);
     res.json({ message: 'Dossier reçu avec succès' });
 });
+
+//pour recevoir les patients
+app.post('/', (req, res) => {
+    const patientData = req.body;
+
+    if (!patientData.nom || !patientData.prenom || !patientData.age) {
+        return res.status(400).json({ message: 'Données invalides.' });
+    }
+
+    console.log('Données reçues :', patientData);
+    res.status(200).json({ message: 'Patient ajouté avec succès !' });
+});
+
+
 
 
 
