@@ -110,11 +110,22 @@ app.listen(PORT, () => {
 
 
 const express = require('express');
+const bp = require('body-parser');
+const path = require('path');
 const mysql = require('mysql');
+const cors=require(cors);
 
 
 //rest onject
 const app = express()
+app.use(core());
+
+
+app.listen(8081, ()=>{
+    console.log("Listening..");
+})
+
+
 
 
 //route
