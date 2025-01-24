@@ -105,6 +105,10 @@ app.listen(PORT, () => {
 
 
 
+
+
+
+
 const express = require('express');
 const mysql = require('mysql');
 
@@ -122,8 +126,6 @@ app.get('/', (req,res) =>{
 
 //PORT
 const PORT = 5050;
-
-
 
 
 //connexion a la base de donnee
