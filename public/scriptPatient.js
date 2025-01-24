@@ -1,49 +1,49 @@
-// Configuration de la connexion
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', // Votre utilisateur wat
-    password: '', // Votre mot de passe MySQL
-    database: 'projetnodejs' // Remplacez par votre base de données
-  });
-  
-  // Fonction pour ajouter un enregistrement
-  function ajouter(nom,ville,tel) {
-    const sql = 'INSERT INTO client (nom,ville,tel)  values(?,?,?)';
-    connection.query(sql,[nom,ville,tel], (err, results) => {
-      if (err) throw err;
-      console.log('Patient ajouté');
-      
-    });
+//Code Client (Validation des Formulaires et Soumission) 
+
+document.getElementById('patientform').addEventListener('submit', async (e) => {
+  e.preventDefault(); // Empêche le rechargement de la page
+
+  const nom = document.getElementById('nom').value;
+  const datedecreation = document.getElementById('prenom').value;
+  const age = document.getElementById('age').value;
+  const adresse = document.getElementById('adresse').value;
+  const telephone = document.getElementById('telephone').value;
+  const naissance = document.getElementById('naissance').value;
+  const dcreation = document.getElementById('dcreation').value;
+  const sexe = document.getElementById('sexe').value;
+
+  const patientData = { nom, prenom, age, adresse, telephone, naissance, sexe };
+
+  try {
+      const response = await fetch('http://localhost:5050/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(patientData),
+      });
+
+      if (response.ok) {
+          alert('Patient ajouté avec succès !');
+          document.getElementById('patientform').reset();
+      } else {
+          const error = await response.json();
+          alert(`Erreur : ${error.message}`);
+      }
+  } catch (err) {
+      console.error('Erreur réseau :', err);
+      alert('Une erreur réseau est survenue.');
   }
-  
+});
+
+
+// Lancement du serveur
+app.listen(PORT, () => {
+  console.log(`Serveur lancé sur http://localhost:${PORT}`);
+});
 
 
 
 
-  // Fonction pour modifier un enregistrement
-  function modifier(idPatient,newData) {
-    const sql = 'UPDATE client SET nom= ? WHERE idclient= ?';
-    connection.query(sql, data, (err, results) => {
-      if (err) throw err;
-      console.log('client modifié.');
-    });
-  }
-  
-  // Fonction pour supprimer un enregistrement
-  function supprimer(idPatient) {
-    const sql = 'DELETE FROM client WHERE idclient= ?';
-  connection.query(sql, (err, results) => {
-      if (err) throw err;
-      console.log('client supprimé')
-    });
-  }
-  
-  // Exportation des fonctions
-  module.exports = {
-    ajouter,
-    modifier,
-    supprimer
-  };  
-  
   
 
