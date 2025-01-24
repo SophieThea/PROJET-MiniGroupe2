@@ -113,12 +113,12 @@ const express = require('express');
 const bp = require('body-parser');
 const path = require('path');
 const mysql = require('mysql');
-const cors=require(cors);
+
 
 
 //rest onject
 const app = express()
-app.use(core());
+
 
 
 app.listen(8081, ()=>{
@@ -131,7 +131,7 @@ app.listen(8081, ()=>{
 //route
 //URL => http://localhost:5050
 app.get('/', (req,res) =>{
-    return res.status(200).send('<h1>BONzourrr les amis</h1>');                                            
+    return res.status(200).sendFile(path.join(__dirname,'public','PatientForm.html'));                                            
 });
 
 
