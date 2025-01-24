@@ -151,8 +151,16 @@ connection.connect((err) => {
     console.log("mes donnees sont", rows)
 
 });
+Pour script dossier 
 */
+// Middleware pour analyser le corps de la requête en JSON
+app.use(express.json());
 
+// Endpoint pour recevoir les données
+app.post('/', (req, res) => {
+    console.log('Données reçues:', req.body);
+    res.json({ message: 'Dossier reçu avec succès' });
+});
 
 
 
