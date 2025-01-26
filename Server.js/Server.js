@@ -111,17 +111,28 @@ app.listen(PORT, () => {
 
 
 const express = require('express');
+const bp = require('body-parser');
+const path = require('path');
 const mysql = require('mysql');
+
 
 
 //rest onject
 const app = express()
 
 
+
+app.listen(8081, ()=>{
+    console.log("Listening..");
+})
+
+
+
+
 //route
 //URL => http://localhost:5050
 app.get('/', (req,res) =>{
-    return res.status(200).send('<h1>BONzourrr les amis</h1>');                                            
+    return res.status(200).sendFile(path.join(__dirname,'public','PatientForm.html'));                                            
 });
 
 
@@ -154,8 +165,16 @@ connection.connect((err) => {
     console.log("mes donnees sont", rows)
 
 });
+Pour script dossier 
 */
+// Middleware pour analyser le corps de la requête en JSON
+app.use(express.json());
 
+// Endpoint pour recevoir les données
+app.post('/', (req, res) => {
+    console.log('Données reçues:', req.body);
+    res.json({ message: 'Dossier reçu avec succès' });
+});
 
 //pour recevoir les patients
 app.post('/', (req, res) => {
