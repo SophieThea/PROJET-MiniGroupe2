@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Vertical</title>
+  <link rel="stylesheet" href="projet.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
+    
+</head>
+  <header>
+    <style>
+    /* Global Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1fa7dd;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #4a4abd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-menu li {
+  font-size: 16px;
+}
+
+.header-menu a {
+  text-decoration: none;
+  color: #2c3e50;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.header-menu a:hover {
+  background-color: #f39c12;
+  color: white;
+}
+
+a:focus, button:focus {
+  outline: 3px solid #f39c12; /* Focus accessibility */
+}
+
+/* Search Bar and Social Icons */
+.search-bar {
+  position: absolute;
+  right: 150px;
+}
+
+.social-icons {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  font-size: 24px;
+  color: rgb(39, 234, 18);
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #f39c12;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #2c3e50;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.menu {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.menu li {
+  padding: 15px;
+  text-align: center;
+  background-color: #4a4abd;
+  margin: 5px 0;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.menu li:hover {
+  background-color: #bd1010;
+  color: white;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Contact Form Container */
+.contact-container {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 70px; /* Space under header */
+  margin-left: 470px; /* Space for sidebar */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(7, 214, 56, 0.849);
+  max-width: 600px;
+  width: calc(100% - 200px); /* Adjust to available space */
+  text-align: center;
+}
+
+h1 {
+  color: #5918db;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td  {
+  padding: 30px;
+  vertical-align: top;
+}
+
+td :first-child {
+  text-align: right;
+  font-weight: bold;
+  color: #1625c7;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #ccc;
+  outline: none;
+}
+
+.btn-submit {
+  background-color: #0dd832;
+  color: rgba(199, 207, 200, 0.669);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #25f73ee3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .search-bar {
+    width: 50%; /* Center the search bar */
+    margin-top: 20px;
+  }
+
+  .sidebar {
+    width: 50px; /* Reduce sidebar width on mobile */
+  }
+
+  .social-icons {
+    gap: 10px; /* Reduce the space between social icons */
+  }
+
+  .header-menu {
+    gap: 10px; /* Reduce the space between header menu items */
+  }
+
+  .contact-container {
+    margin-left: 0; /* Adjust container to avoid sidebar overlap */
+    width: 100%; /* Allow container to fill available width */
+  }
+}
+    </style>
+    <div class="header-menu">
+      <ul>
+        <li><a href="Acceuil.html">🏠 Accueil</a></li>
+        <li><a href="contact.html">📝 Contact</a></li>
+      </ul>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.google.com" target="_blank"><i class="fab fa-google"></i></a>
+      <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </header>
+  <body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="hopital.png" alt="Logo" class="profile-image">
+        <h3>Sophie Sarr</h3>
+      </div>
+      <ul class="menu">
+        <li><a href="Acceuil.html">🏠 Accueil</a></li>
+        <li><a href="Gestion de patient.html">🏢 Gestion de patients</a></li>
+        <li><a href="plan de passation.html">📋 Plan de Passation</a></li>
+        <li><a href="dossier du patient.html">📅 Dossier du Patient</a></li>
+        <li><a href="suivi du patient.html">📊 Suivi Activités</a></li>
+        <li><a href="fournisseur.html">🚚 Fournisseur</a></li>
+        <li><a href="Acceuil.html">✅ Attribution</a></li>
+        <li><a href="contact.html">📝 Contact</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <div class="contact-container">
+    <h1>Contactez-nous</h1>
+    <form action="submit_form.php" method="post">
+      <table >
+        <!-- Nom -->
+        <tr>
+          <td ><label for="name">Nom complet :</label></td>
+          <td ><input type="text" id="name" name="name" placeholder="Entrez votre nom complet" required></td>
+        </tr>
+
+        <!-- Email -->
+        <tr>
+          <td ><label for="email">Adresse email :</label></td>
+          <td ><input type="email" id="email" name="email" placeholder="Entrez votre email" required></td>
+        </tr>
+
+        <!-- Téléphone -->
+        <tr>
+          <td ><label for="phone">Numéro de téléphone :</label></td>
+          <td ><input type="tel" id="phone" name="phone" placeholder="Entrez votre numéro de téléphone"></td>
+        </tr>
+
+        <!-- Message -->
+        <tr>
+          <td><label for="message">Message :</label></td>
+          <td><textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea></td>
+        </tr>
+
+        <!-- Bouton d'envoi -->
+        <tr>
+          <td colspan="2" style="text-align: center;">
+            <button type="submit" class="btn-submit">Envoyer</button>
+          </td>
+        </tr>
+      </table >
+    </form>
+  </div>
+</body>
+
+</html>
