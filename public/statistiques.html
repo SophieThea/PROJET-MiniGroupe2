@@ -6,6 +6,183 @@
   <title>Menu Vertical</title>
   <link rel="stylesheet" href="projet.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+
+    /* Reset des styles par défaut */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Mise en forme générale du body */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: #1616bc;
+  width: 100%;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(10, 223, 206, 0.735);
+}
+
+.header-menu ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.header-menu li {
+  margin: 0 20px;
+}
+
+.header-menu a {
+  color: rgb(26, 152, 163);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+}
+
+.header-menu a:hover {
+  background-color: #45a049;
+  border-radius: 5px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.sidebar .profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar .profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.sidebar h3 {
+  color: #fff;
+  margin-top: 10px;
+}
+
+.sidebar .menu {
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+.sidebar .menu li {
+  margin-bottom: 15px;
+}
+
+.sidebar .menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.sidebar .menu a:hover {
+  background-color: #45a049;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Section pour les statistiques */
+.statistics-section {
+  margin-left: 280px;
+  padding: 20px;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.statistics-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Graphique */
+canvas {
+  width: 100% !important;
+  max-width: 800px;
+  margin: 20px auto;
+  border: 1px solid #d90c0c;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  background-color: #1616bc;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer h3 {
+  margin-bottom: 10px;
+}
+
+footer p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #45a049;
+}
+
+/* Responivité pour les petits écrans */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .statistics-section {
+    margin-left: 220px;
+    padding: 15px;
+  }
+
+  .header-menu ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-menu li {
+    margin: 10px 0;
+  }
+}
+
+  </style>
 </head>
 <body>
   <header>
@@ -39,11 +216,32 @@
         <li><a href="plan de passation.html">📋 Plan de Passation</a></li>
         <li><a href="dossier du patient.html">📅 Dossier du Patient</a></li>
         <li><a href="suivi du patient.html">📊 Suivi Activités</a></li>
-        <li><a href="fournisseur.html">🚚 Fournisseur</a></li>
-        <li><a href="Acceuil.html">✅ Attribution</a></li>
+        
         <li><a href="contact.html">📝 Contact</a></li>
       </ul>
     </aside>
   </div>
+  <div class="statistics-section">
+    <h2>Statistiques des Patients</h2>
+    <canvas id="genderChart" width="400" height="200"></canvas>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <h3>À propos</h3>
+    <p>Bienvenue sur notre plateforme de gestion des patients. Suivez les données de vos patients en temps réel.</p>
+  </div>
+  <div>
+    <h3>Contact</h3>
+    <p>Email : contact@exemple.com</p>
+    <p>Téléphone : +33 1 23 45 67 89</p>
+  </div>
+  <p>&copy; 2025 MonSite. Tous droits réservés.</p>
+</footer>
+
+<script src="statistiques.js"></script> <!-- Script pour afficher les graphiques -->
+
+
 </body>
 </html>
