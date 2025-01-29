@@ -12,7 +12,7 @@ document.getElementById('patientform').addEventListener('submit', async (e) => {
   const dcreation = document.getElementById('dcreation').value;
   const sexe = document.getElementById('sexe').value;
 
-  const patientData = { nom, prenom, age, adresse, telephone, naissance, sexe };
+  const patientData = { nom, prenom, age, adresse, telephone, naissance,dcreation, sexe };
 
   try {
       const response = await fetch('http://localhost:5050/', {

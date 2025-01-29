@@ -6,7 +6,6 @@ document.getElementById('formDossier').addEventListener('submit', async (e) => {
 alue;
     const datedecreation = document.getElementById('dcreation').value;
     
-    
     const patientData = { dcreation};
 
     try {
