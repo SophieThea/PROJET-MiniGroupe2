@@ -6,12 +6,13 @@
   <title>Menu Vertical</title>
   <link rel="stylesheet" href="projet.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet"  href="style.css">
 </head>
 <body>
   <header>
     <div class="header-menu">
       <ul>
-        <li><a href="Gestion de patient.html">🏢 Gestion de patients</a></li>
+        <li><a href="dossier du patient.html">🏢 Gestion de patients</a></li>
         <li><a href="plan de passation.html">📋 Plan du jour</a></li>
       </ul>
     </div>
@@ -44,5 +45,61 @@
       </ul>
     </aside>
   </div>
+  <form id="formDossier">
+       
+    <h2 style="text-align: center;">Informations du Patient</h2>
+    <form action="/submit" method="post">
+        <table>
+            <tr>
+                <th colspan="2">Informations personnelles</th>
+            </tr>
+            <tr>
+                <td>ID_Dossier :</td>
+                <td><input type="number" name="idd" id="idd" placeholder="Entrer l'ID du dossier" required></td>
+            </tr>
+            <tr>
+                <td>Date de creation du dossier :</td>
+                <td><input type="Date" name="dcreation" id="dcreation"  required></td>
+            </tr>
+           
+                <td>ID_Patient :</td>
+                <td>
+                    <select name="sexe" id="sexe" required>
+                        <option value="masculin">Masculin</option>
+                        <option value="feminin">Féminin</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </td>
+            </tr>
+        
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Envoyer" id="ok">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <hr>
+    
+
+
+
+
 </body>
+<footer>
+<div>
+  <h3>À propos</h3>
+  <p>Bienvenue sur notre site ! Nous sommes dédiés à vous offrir le meilleur contenu et service.</p>
+</div>
+<div>
+<div>
+  <h3>Contact</h3>
+  <p>Email : contact@exemple.com</p>
+  <p>Téléphone : +33 1 23 45 67 89</p>
+  <p>Adresse : 123 Rue Imaginaire, Paris, France</p>
+</div>
+<p>&copy; 2025 MonSite. Tous droits réservés.</p>
+</footer>
+
 </html>

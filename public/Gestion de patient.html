@@ -6,13 +6,22 @@
   <title>Menu Vertical</title>
   <link rel="stylesheet" href="projet.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet"  href="style.css">
 </head>
 <body>
   <header>
     <div class="header-menu">
-      <ul>
+      <nav>
+        <ul>
+        
+        <li> <a href="listePatient.html"> listePatient</a></li>
+        
         <li><a href="Gestion de patient.html">🏢 Gestion de patients</a></li>
         <li><a href="plan de passation.html">📋 Liste PATIENT</a></li>
+       
+        
+      </ul>
+  </nav>
       </ul>
     </div>
     <div class="search-bar">
@@ -44,5 +53,86 @@
       </ul>
     </aside>
   </div>
+
+
+  <h2 style="text-align: center;">Informations du Patient</h2>
+    <form action="/submit" method="post" id="patientform">
+    <table>
+        <tr>
+            <th colspan="2">Informations personnelles</th>
+        </tr>
+        <tr>
+            <td>Nom :</td>
+            <td><input type="text" name="nom" required></td>
+        </tr>
+        <tr>
+            <td>Prenom :</td>
+            <td><input type="text" name="Prenom" required></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="email" name="email" required></td>
+        </tr>
+        <tr>
+            <td>Mot de passe :</td>
+            <td><input type="password" name="mot_de_passe" required></td>
+        </tr>
+        <tr>
+            <td>Adresse :</td>
+            <td><input type="text" name="adresse" id="adresse" placeholder="Entrer votre adresse" required></td>
+        </tr>
+        <tr>
+            <td>Téléphone :</td>
+            <td><input type="number" name="telephone" id="telephone" placeholder="Entrer votre numéro" required></td>
+        </tr>
+    
+        <tr>
+            <td>Date de création du dossier :</td>
+            <td><input type="date" name="dcreation" id="dcreation" required></td>
+        </tr>
+      
+
+        <tr>
+        <tr>
+            <td>Genre :</td>
+            <td>
+                <select name="genre">
+                    <option value="masculin">Masculin</option>
+                    <option value="feminin">Féminin</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Commentaires :</td>
+            <td><textarea name="commentaires" rows="4" style="width: 100%;"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <input type="submit" value="Envoyer" id="ok">
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
+
+<hr>
+
+
+<footer>
+    <div>
+      <h3>À propos</h3>
+      <p>Bienvenue sur notre site ! Nous sommes dédiés à vous offrir le meilleur contenu et service.</p>
+    </div>
+    <div>
+    <div>
+      <h3>Contact</h3>
+      <p>Email : contact@exemple.com</p>
+      <p>Téléphone : +33 1 23 45 67 89</p>
+      <p>Adresse : 123 Rue Imaginaire, Paris, France</p>
+    </div>
+    <p>&copy; 2025 MonSite. Tous droits réservés.</p>
+  </footer>
 </html>
+
+
