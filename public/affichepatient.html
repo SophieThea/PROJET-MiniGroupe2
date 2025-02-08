@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Dossiers</title>  
+  <script src="affichepatient.js" defer></script>  <!-- Lien vers le fichier JS -->
+  <link rel="stylesheet" href="projet2.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
+  <style>
+   /* Style général pour la table */
+table {
+  width: 50%;  /* La table occupera 50% de la largeur disponible */
+  margin: 20px auto;  /* Centrer la table horizontalement avec une marge au-dessus et en dessous */
+  border-collapse: collapse;  /* Fusionne les bordures des cellules */
+  font-size: 16px;  /* Taille de police plus petite */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Ajoute une ombre légère autour de la table */
+}
+
+/* Style des cellules de la table */
+th, td {
+  padding: 10px 12px;  /* Espace dans les cellules */
+  text-align: center;  /* Centre le texte dans les cellules */
+  border: 1px solid #ddd;  /* Bordure légère autour des cellules */
+}
+
+/* Style des en-têtes de colonne */
+th {
+  background-color: #5078b9;  /* Couleur de fond pour l'en-tête */
+  color: white;  /* Texte en blanc pour l'en-tête */
+  font-size: 18px;  /* Taille de la police des en-têtes */
+}
+
+/* Définir la largeur des colonnes */
+th:nth-child(1), td:nth-child(1) {
+  width: 10%;  /* Largeur de la première colonne (ID Patient) */
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 15%;  /* Largeur de la deuxième colonne (Nom) */
+}
+
+th:nth-child(3), td:nth-child(3) {
+  width: 15%;  /* Largeur de la troisième colonne (Prénom) */
+}
+
+th:nth-child(4), td:nth-child(4) {
+  width: 10%;  /* Largeur de la quatrième colonne (Âge) */
+}
+
+th:nth-child(5), td:nth-child(5) {
+  width: 15%;  /* Largeur de la cinquième colonne (Téléphone) */
+}
+
+th:nth-child(6), td:nth-child(6) {
+  width: 10%;  /* Largeur de la sixième colonne (Sexe) */
+}
+
+th:nth-child(7), td:nth-child(7) {
+  width: 15%;  /* Largeur de la septième colonne (Nationalité) */
+}
+
+/* Style des lignes alternées */
+tr:nth-child(even) {
+  background-color: #f2f2f2;  /* Couleur de fond pour les lignes paires */
+}
+
+/* Style de la ligne au survol */
+tr:hover {
+  background-color: #ddd;  /* Changement de couleur au survol de la ligne */
+}
+
+/* Footer */
+footer {
+background-color: #333;
+color: white;
+padding: 15px 0;
+text-align: center;
+width: 100%;
+}
+
+
+  </style>
+</head>
+<body>
+
+     
+
+
+
+  <header>
+    <div class="header-menu">
+      <ul>
+        <li><a href="Accueil.html">🏠 Accueil</a></li>
+        <li><a href="affichepatient.html">🏢Liste de Patients</a></li>
+        <li><a href="dossierform.html">🏢Ajouter Dossier</a></li>
+      </ul>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.google.com" target="_blank"><i class="fab fa-google"></i></a>
+      <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="hopital.jpeg" alt="Logo" class="profile-image">
+        <h3>Hôpital</h3>
+      </div>
+      <ul class="menu">
+        <li><a href="Accueil.html">🏠 Accueil</a></li>
+        <li><a href="Patientform.html">🏢Ajouter Patient</a></li>
+        <li><a href="dossierform.html">🏢Ajouter Dossier</a></li>
+        <li><a href="affichepatient.html">🏢Liste de Patients</a></li>
+        <li><a href="affichedossier.html">🏢Liste de Dossiers</a></li>
+        <li><a href="plandepassation.html">📋 Plan de Passation</a></li>
+        <li><a href="suividupatient.html">📊 Suivi Activités</a></li>
+        <li><a href="fournisseur.html">🚚 Fournisseur</a></li>
+        <li><a href="contact.html">📝 Contact</a></li>
+      </ul>
+    </aside>
+  </div>
+
+
+
+
+</body>
+<center>
+  <h1>Liste des Patients</h1>
+</center>
+  <table id="patientTable" border="1">
+    <thead>
+      <tr>
+        <th>ID Patient</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Âge</th>
+        <th>Téléphone</th>
+        <th>Sexe</th>
+        <th>Nationalité</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Les lignes des patients seront ajoutées ici par JavaScript -->
+    </tbody>
+  </table>
+</body>
+
+
+
+
+
+
+</html>

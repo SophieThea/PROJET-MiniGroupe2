@@ -1,27 +1,17 @@
 {
-  "name": "projet-minigroupe2",
+  "name": "mon-projet",
   "version": "1.0.0",
-  "description": "projet-minigroupe2 app  node express",
-  "main": "server.js",
+  "main": "exemple.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "sophie",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "express": "^4.21.2",
     "mysql": "^2.18.1"
   },
-  "devDependencies": {},
-  "keywords": []
-
-
-  
-    
-    
-  
+  "description": ""
 }
-
-
-  

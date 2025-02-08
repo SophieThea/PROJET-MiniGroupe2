@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un patient</title>
+  <link rel="stylesheet" href="projet2.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+  /* Réinitialisation des styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+
+}
+
+/* Centrer le formulaire */
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Pour éviter de toucher le footer */
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Style du formulaire */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 60%; /* Large mais pas trop */
+    max-width: 600px; /* Pour éviter que ça devienne trop grand sur grand écran */
+}
+
+/* Titre */
+h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+    text-align: center;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #2f5058;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+td {
+    padding: 10px;
+}
+
+/* Champs input */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Bouton d'ajout */
+input[type="submit"] {
+    background: #2f5058;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background: #2f5058;
+}
+
+  </style>
+
+</head>
+<body>
+
+  <header>
+    <div class="header-menu">
+      <ul>
+        <li><a href="Accueil.html">🏠 Accueil</a></li>
+        <li><a href="Patientform.html">🏢Ajouter Patient</a></li>
+        <li><a href="dossierform.html">🏢Ajouter Dossier</a></li>
+      </ul>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.google.com" target="_blank"><i class="fab fa-google"></i></a>
+      <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="hopital.jpeg" alt="Logo" class="profile-image">
+        <h3>Hôpital</h3>
+      </div>
+      <ul class="menu">
+        <li><a href="Accueil.html">🏠 Accueil</a></li>
+        <li><a href="Patientform.html">🏢Ajouter Patient</a></li>
+        <li><a href="dossierform.html">🏢Ajouter Dossier</a></li>
+        <li><a href="affichepatient.html">🏢Liste de Patients</a></li>
+        <li><a href="affichedossier.html">🏢Liste de Dossiers</a></li>
+        <li><a href="plandepassation.html">📋 Plan de Passation</a></li>
+        <li><a href="suividupatient.html">📊 Suivi Activités</a></li>
+        <li><a href="fournisseur.html">🚚 Fournisseur</a></li>
+        <li><a href="contact.html">📝 Contact</a></li>
+      </ul>
+    </aside>
+  </div>
+
+
+
+
+
+
+
+  <div class="form-section">
+    <h2 style="text-align: center;">Ajouter Patient</h2>
+    <form action="/add-patient" method="POST" id="patientform">
+      <table>
+        <tr>
+          <th colspan="2">Informations du Patient</th>
+        </tr>
+        <tr>
+          <td>Nom :</td>
+          <td><input type="text" name="nom" id="nom"  required></td>
+        </tr>
+        <tr>
+          <td>Prenom :</td>
+          <td><input type="text" name="prenom" id="prenom" required></td>
+        </tr>
+        <tr>
+          <td>Âge :</td>
+          <td><input type="number" name="age" id="age" required></td>
+        </tr>
+        <tr>
+          <td>tel:</td>
+          <td><input type="number" name="tel" id="tel" required></td>
+        </tr>
+        <tr>
+          <td>sexe :</td>
+          <td><input type="text" name="sexe" id="sexe" placeholder="Entrer votre sexe" required></td>
+        </tr>
+        
+        <tr>
+          <td>Nationalité :</td>
+          <td><input type="text" name="nationalite" id="nationalite" required></td>
+        </tr>
+       
+        <tr>
+          <td colspan="2" style="text-align: center;">
+
+            <input type="submit" value="Ajouter" id="Ajouter">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+</html>

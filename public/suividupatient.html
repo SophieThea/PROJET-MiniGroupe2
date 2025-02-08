@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Vertical</title>
+  <link rel="stylesheet" href="projet2.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body>
+  <header>
+    <div class="header-menu">
+      <ul>
+        <li><a href="Accueil.html">🏠 Accueil</a></li>
+        <li><a href="Patientform.html">🏢Ajouter Patient</a></li>
+        <li><a href="dossierform.html">🏢Ajouter Dossier</a></li>
+      </ul>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher...">
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.google.com" target="_blank"><i class="fab fa-google"></i></a>
+      <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+    
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="hopital.jpeg" alt="Logo" class="profile-image">
+        <h3>Hôpital</h3>
+      </div>
+      <ul class="menu">
+        <li><a href="Accueil.html">🏠 Accueil</a></li>
+        <li><a href="Patientform.html">🏢Ajouter Patient</a></li>
+        <li><a href="dossierform.html">🏢Ajouter Dossier</a></li>
+        <li><a href="affichepatient.html">🏢Liste de Patients</a></li>
+        <li><a href="affichedossier.html">🏢Liste de Dossiers</a></li>
+        <li><a href="plandepassation.html">📋 Plan de Passation</a></li>
+        <li><a href="suividupatient.html">📊 Suivi Activités</a></li>
+        <li><a href="fournisseur.html">🚚 Fournisseur</a></li>
+        <li><a href="contact.html">📝 Contact</a></li>
+      </ul>
+    </aside>
+  </div>
+  <center><h1>Suivi des Activités</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activité</th>
+      <th>Patient</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Commentaires</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Consultation</td>
+      <td>Jean Dupont</td>
+      <td>25/01/2025</td>
+      <td>Complétée</td>
+      <td>Patient satisfait, pas d'anomalies</td>
+    </tr>
+    <tr>
+      <td>Traitement</td>
+      <td>Marie Claire</td>
+      <td>26/01/2025</td>
+      <td>En cours</td>
+      <td>Surveillance des effets secondaires</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Ajouter une Activité</h2>
+<form action="ajouter_activite.php" method="post">
+  <label for="activite">Type d'Activité:</label>
+  <input type="text" id="activite" name="activite" placeholder="Consultation, Traitement..." required>
+
+  <label for="patient">Patient:</label>
+  <input type="text" id="patient" name="patient" placeholder="Nom du patient" required>
+
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" required>
+
+  <label for="status">Statut:</label>
+  <select id="status" name="status" required>
+    <option value="en_cours">En Cours</option>
+    <option value="complete">Complétée</option>
+    <option value="a_venir">À Venir</option>
+  </select>
+
+  <label for="commentaires">Commentaires:</label>
+  <textarea id="commentaires" name="commentaires" placeholder="Notes supplémentaires" rows="4"></textarea>
+
+  <button type="submit" class="btn-submit">Ajouter l'Activité</button>
+</form>
+<h2>Suivi des Médicaments</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Médicament</th>
+      <th>Dosage</th>
+      <th>Fréquence</th>
+      <th>Patient</th>
+      <th>Commentaires</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Paracétamol</td>
+      <td>500mg</td>
+      <td>2 fois par jour</td>
+      <td>Jean Dupont</td>
+      <td>Bon résultat, aucune réaction adverse</td>
+    </tr>
+    <tr>
+      <td>Aspirine</td>
+      <td>300mg</td>
+      <td>1 fois par jour</td>
+      <td>Marie Claire</td>
+      <td>Prévoir un suivi dans 3 jours</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Statistiques des Activités</h2>
+<canvas id="chart"></canvas></center>
+
+
+</body>
+
+
+
+
+<footer>
+  <div>
+    <h3>À propos</h3>
+    <p>Bienvenue sur notre site ! Nous sommes dédiés à vous offrir le meilleur contenu et service.</p>
+  </div>
+  <div>
+    <h3>Contact</h3>
+    <p>Email : contact@exemple.com</p>
+    <p>Téléphone : +33 1 23 45 67 89</p>
+    <p>Adresse : 123 Rue Imaginaire, Paris, France</p>
+  </div>
+  <p>&copy; 2025 MonSite. Tous droits réservés.</p>
+</footer>
+
+
+
+</html>

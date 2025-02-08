@@ -1,202 +1,351 @@
-/*const express = require('express');
-const bp = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
-const express = require('express');
-const Joi = require('joi'); // Importer Joi
-const jwt = require('jsonwebtoken'); //l'api 
-const bcrypt = require('bcryptjs');//l'api 
 
 
-
-// Initialisation de l'application
 const app = express();
-const PORT = 3020;
 
-// Configuration de la base de données
+// Middleware pour parser le corps des requêtes
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+//Pour les fichiers statique
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+// Connexion à la base de données MySQL
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'projetnodejs'
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'Gestionpatient'
 });
 
-// Connexion à la base de données
-projetnodejs.connect((err) => {
+db.connect((err) => {
+  if (err) {
+    console.error('Erreur de connexion à la base de données:', err);
+    return;
+  }
+  console.log('Connecté à la base de données MySQL');
+});
+
+// Exemple de route GET
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'inscription.html'));
+});
+
+
+
+
+
+
+//Route pour ajouter un user
+// Route pour gérer le formulaire
+app.post('/add-user', (req, res) => {
+  const { nomd, password } = req.body;
+
+  // Logique pour insérer les données dans la base de données
+  const sql = 'INSERT INTO User (Nomutilisateur , password) VALUES (?, ?)';
+  db.query(sql, [nomd, password], (err, result) => {
     if (err) {
-        console.error('Erreur de connexion avec la base de données :', err.stack);
-        return;
+      console.error('Erreur lors de l\'insertion des données :', err);
+      return res.status(500).send('Erreur lors de l\'ajout du patient.');
     }
-    console.log('Connexion réussie, ID du thread :', projetnodejs.threadId);
-});
-// Schéma de validation avec Joi
-const patientSchema = Joi.object({
-    nom: Joi.string().min(2).max(50).required(),
-    prenom: Joi.string().min(2).max(50).required(),
-    age: Joi.number().integer().min(0).max(150).required(),
-    adresse: Joi.string().max(255).required(),
-    telephone: Joi.string().pattern(/^[0-9]{10,15}$/).required(), // 10 à 15 chiffres
-    naissance: Joi.date().required(),
-    dcreation: Joi.date().required(),
-    allergies: Joi.string().max(255).allow('').optional(), // Peut être vide
-    sexe: Joi.string().valid('Homme', 'Femme').required(),
-});
 
-// Middleware
-app.use(bp.json());
-app.use(express.static('public'));
-
-
-
-
-
-
-
-
-// Route pour ajouter un patient
-app.post('/api/user', (req, res) => {
-    const { prenom, nom, login, password } = req.body;
-    const sql = "INSERT INTO user (prenom, nom, login, password) VALUES (?, ?, ?, ?)";
-    db.query(sql, [prenom, nom, login, password], (error, result) => {
-        if (error) {
-            console.error('Erreur lors de l\'ajout de l\'utilisateur :', error);
-            res.status(500).send('Erreur lors de l\'ajout de l\'utilisateur');
-            return;
-        }
-        res.status(200).send('Utilisateur ajouté avec succès');
-    });
+    // Rediriger vers patientform.html après l'insertion réussie
+    res.redirect('/patientform.html');
+  });
 });
 
 
 
 
 
-// Routes pour les dossiers
-app.post('/api/dossiers', (req, res) => {
-    const {Date_creation} = req.body; // Assurez-vous que ces champs correspondent à votre formulaire
-    const query = 'INSERT INTO dossier (Date_creation) VALUES (?)';
-    db.query(query, [Date_creation], (err, result) => {
+
+
+
+
+//Route pour ajouter un PATIENT
+app.post('/add-patient', (req, res) => {
+    const { nom, prenom, age, tel, sexe, nationalite } = req.body;
+  
+    // Requête SQL pour insérer les données dans la table `patient`
+    const sql = `
+      INSERT INTO patient (nom, prenom, age, tel, sexe, nationalite)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `;
+  
+    db.query(sql, [nom, prenom, age, tel, sexe, nationalite], (err, result) => {
       if (err) {
-        res.status(500).json({ message: 'Erreur lors de l\'ajout du dossier.', error: err });
+        console.error('Erreur lors de l\'ajout du patient :', err);
+        res.status(500).send('Erreur lors de l\'ajout du patient');
       } else {
-        res.status(201).json({ message: 'Dossier ajouté avec succès.' });
+        console.log('Patient ajouté avec succès');
+        res.sendFile(path.join(__dirname, 'public', 'affichepatient.html'));
       }
     });
   });
+  
+
+
+
+
+
+
+
+
+
+  //Route pour ajouter un DOSSIER
+app.post('/add-dossier', (req, res) => {
+  const { nom, prenom, ddc } = req.body;
+
+  // Étape 1: Chercher l'ID du patient dans la table 'patient' avec le nom et prénom
+  const queryPatient = `SELECT IDPatient FROM patient WHERE nom = ? AND prenom = ?`;
+
+  db.query(queryPatient, [nom, prenom], (err, patientResult) => {
+    if (err) {
+      res.status(500).send('Erreur dans la requête des informations du patient');
+      return;
+    }
+
+    if (patientResult.length > 0) {
+      const patientId = patientResult[0].IDPatient;  // On récupère l'ID du patient
+
+      // Étape 2: Ajouter la date de création et l'ID du patient dans la table 'dossier'
+      const queryDossier = `INSERT INTO Dossiers (datedecreation, IDPatient) VALUES (?, ?)`;
+
+      db.query(queryDossier, [ddc, patientId], (err, dossierResult) => {
+        if (err) {
+          res.status(500).send('Erreur dans l\'insertion du dossier');
+          return;
+        }
+
+        res.sendFile(path.join(__dirname, 'public', 'affichedossier.html'));
+      });
+    } else {
+      res.status(404).send('Patient non trouvé');
+    }
+  });
+});
+
+
+
+
+
+
+
+
+// Route pour ajouter l'examen
+app.post('/add-exam', (req, res) => {
+  const { nom, dateRealisation, resultats, IDDossier } = req.body;
+
+  // Log des données reçues pour vérifier
+  console.log('Données reçues:', req.body);
+
+  // Requête SQL pour insérer les données dans la table 'Exam'
+  const query = `
+    INSERT INTO Exam (nom, daterealisation, resultats, IDDossier)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  db.query(query, [nom, dateRealisation, resultats, IDDossier], (err, result) => {
+    if (err) {
+      console.error('Erreur lors de l\'ajout de l\'examen:', err);
+      res.status(500).send('Erreur lors de l\'ajout de l\'examen');
+      return;
+    }
+    res.status(200).send('Examen ajouté avec succès');
+  });
+});
+
+
+
+
+
+
+
+
+// Route pour récupérer les examens d'un dossier spécifique
+app.get('/get-exams', (req, res) => {
+  // Assure-toi de récupérer les examens de la base de données
+  const query = "SELECT * FROM Exam";  // Change selon ton modèle de base de données
+
+  db.query(query, (error, dossiersResult) => {
+    if (error) {
+      console.error("Erreur lors de la récupération des examens", error);
+      return res.status(500).json({ success: false, message: "Erreur serveur" });
+    }
+    res.json(dossiersResult);  // Renvoie les résultats sous forme de JSON
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+/*app.post('/add-exam', (req, res) => {
+  const { examNom, examDate, examResult } = req.body;
+
+  // Récupérer l'ID du dernier dossier ajouté
+  const queryLastDossier = `SELECT IDDossier FROM Dossiers ORDER BY IDDossier DESC LIMIT 1`;
+  db.query(queryLastDossier, (err, result) => {
+      if (err) {
+          res.status(500).send('Erreur lors de la récupération du dernier dossier');
+          return;
+      }
+
+      if (result.length > 0) {
+          const lastDossierId = result[0].IDDossier;
+
+          // Insérer l'examen avec l'ID du dernier dossier
+          const queryExam = `INSERT INTO Exam (nom, daterealisation, resultats, IDDossier) VALUES (?, ?, ?, ?)`;
+          db.query(queryExam, [examNom, examDate, examResult, lastDossierId], (err, examInsertResult) => {
+              if (err) {
+                  res.status(500).send("Erreur lors de l'ajout de l'examen");
+                  return;
+              }
+              res.send("Examen ajouté avec succès");
+          });
+      } else {
+          res.status(404).send("Aucun dossier trouvé");
+      }
+  });
+});
+*/
+
+
+
+
+
+
+
+
+// Route pour récupérer les dossiers
+app.get('/get-dossiers', (req, res) => {
+  const queryDossiers = `SELECT * FROM Dossiers`;  // Récupère tous les dossiers
+
+  db.query(queryDossiers, (err, dossiersResult) => {
+    if (err) {
+      res.status(500).send('Erreur dans la récupération des dossiers');
+      return;
+    }
+    res.json(dossiersResult);  // Renvoie les résultats sous forme de JSON
+  });
+});
+
+
+
+
+
+
+
+
+// Route pour récupérer les patients:
+app.get('/get-patients', (req, res) => {
+  const queryPatients = `SELECT * FROM patient`;  // Récupère tous les patients
+
+  db.query(queryPatients, (err, patientsResult) => {
+    if (err) {
+      res.status(500).send('Erreur dans la récupération des patients');
+      return;
+    }
+
+    res.json(patientsResult);  // Renvoie les résultats sous forme de JSON
+  });
+});
+
+
+
 
   
 
 
 
 
-// Lancement du serveur
-app.listen(PORT, () => {
-    console.log(`Serveur lancé sur http://localhost:${PORT}`);
-});
-
-//Mado rempli les choses de la base de donnée s'il te plait
-// Exemple : Nom ,  prenom etc..... 
-
-*/
 
 
 
 
+// Route pour ajouter une activité
+// Route pour ajouter une activité
+app.post('/add-activity', (req, res) => {
+  const { activite, prenom, date, status, commentaires } = req.body;
 
-
-
-
-const express = require('express');
-const bp = require('body-parser');
-const path = require('path');
-const mysql = require('mysql');
-
-
-
-//rest onject
-const app = express()
-
-
-
-app.listen(8081, ()=>{
-    console.log("Listening..");
-})
-
-
-
-
-//route
-//URL => http://localhost:5050
-app.get('/', (req,res) =>{
-    return res.status(200).sendFile(path.join(__dirname,'public','PatientForm.html'));                                            
-});
-
-
-//PORT
-const PORT = 5050;
-
-
-//connexion a la base de donnee
-const connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'',
-    database:'projetnodejs'
-});
-
-
-
-
-connection.connect((err) => {
+  // Vérifier si le patient existe et récupérer son ID en fonction du prénom
+  const sqlFindPatient = 'SELECT IDPatient FROM patient WHERE Prenom = ?';
+  db.query(sqlFindPatient, [prenom], (err, results) => {
     if (err) {
-        console.error('Erreur de connexion avec la base de données :'+err.stack);
-        return;
-    }
-    console.log('Connexion réussie:');
-});
-
-
-/*connexion.query("SELECT * FROM patient",(err,rows,fields) => {
-    if (err) throw err;
-    console.log("mes donnees sont", rows)
-
-});
-Pour script dossier 
-*/
-// Middleware pour analyser le corps de la requête en JSON
-app.use(express.json());
-
-// Endpoint pour recevoir les données
-app.post('/', (req, res) => {
-    console.log('Données reçues:', req.body);
-    res.json({ message: 'Dossier reçu avec succès' });
-});
-
-//pour recevoir les patients
-app.post('/', (req, res) => {
-    const patientData = req.body;
-
-    if (!patientData.nom || !patientData.prenom || !patientData.age) {
-        return res.status(400).json({ message: 'Données invalides.' });
+      console.error("Erreur lors de la recherche du patient:", err);
+      return res.json({ success: false, message: "Erreur lors de la recherche du patient." });
     }
 
-    console.log('Données reçues :', patientData);
-    res.status(200).json({ message: 'Patient ajouté avec succès !' });
+    if (results.length === 0) {
+      return res.json({ success: false, message: "Patient non trouvé. Veuillez vérifier le prénom." });
+    }
+
+    const IDPatient = results[0].IDPatient;
+
+    // Insérer l'activité avec l'ID du patient
+    const sqlInsertActivity = `
+      INSERT INTO activite (TypeActivite, Nom, Date, statut, commentaire, IDPatient) 
+      VALUES (?, ?, ?, ?, ?, ?)
+    `;
+    
+    db.query(sqlInsertActivity, [activite, prenom, date, status, commentaires || null, IDPatient], (err, result) => {
+      if (err) {
+        console.error("Erreur lors de l'ajout de l'activité:", err);
+        res.json({ success: false, message: "Erreur lors de l'ajout de l'activité." });
+      } else {
+        res.json({ success: true, message: "Activité ajoutée avec succès." });
+      }
+    });
+  });
+});
+
+
+// Route pour récupérer toutes les activités
+app.get('/get-activities', (req, res) => {
+  const sql = 'SELECT * FROM activite';
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Erreur lors de la récupération des activités:', err);
+      res.json({ success: false, message: 'Erreur lors de la récupération des activités.' });
+    } else {
+      res.json(results);
+    }
+  });
 });
 
 
 
 
 
-//Listen
-app.listen(PORT , () => {
-    console.log('Server running');
+
+
+
+
+
+
+
+// Lancer le serveur
+const port = 3030;
+app.listen(port, () => {
+  console.log(`Serveur Express en écoute sur le port ${port}`);
 });
 
 
 
 
 
-//
-//SA MARCHE POUR L'INSTANT DONC TOUCHONS A RIEN
-//cd C:\Program Files\nodejs\backend\PROJET-MiniGroupe2\Server.js   apres node server.js
+
+//lien apache et mysql:
+//sudo /Applications/XAMPP/xamppfiles/xampp startapache
+//sudo /Applications/XAMPP/xamppfiles/xampp startmysql
+
+
